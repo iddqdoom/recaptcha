@@ -1,3 +1,5 @@
+# The HTTP proxy to tunnel requests through
+
 # reCAPTCHA PHP client library
 
 [![Build Status](https://travis-ci.org/google/recaptcha.svg)](https://travis-ci.org/google/recaptcha)

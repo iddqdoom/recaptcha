@@ -1,4 +1,4 @@
-# The HTTP proxy to tunnel requests through
+# Additional options for a cURL transfer
 
 # reCAPTCHA PHP client library
 

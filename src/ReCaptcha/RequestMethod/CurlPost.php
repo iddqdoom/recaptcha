@@ -74,6 +74,7 @@ class CurlPost implements RequestMethod
     {
         $this->curl = (is_null($curl)) ? new Curl() : $curl;
         $this->siteVerifyUrl = (is_null($siteVerifyUrl)) ? ReCaptcha::SITE_VERIFY_URL : $siteVerifyUrl;
+        $this->options = $options;
     }
 
     /**

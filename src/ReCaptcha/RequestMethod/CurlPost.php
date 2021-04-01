@@ -58,12 +58,19 @@ class CurlPost implements RequestMethod
     private $siteVerifyUrl;
 
     /**
+     * Additional options for a cURL transfer
+     * @var array
+     */
+    private $options = [];
+
+    /**
      * Only needed if you want to override the defaults
      *
      * @param Curl $curl Curl resource
      * @param string $siteVerifyUrl URL for reCAPTCHA siteverify API
+     * @param array $options
      */
-    public function __construct(Curl $curl = null, $siteVerifyUrl = null)
+    public function __construct(Curl $curl = null, $siteVerifyUrl = null, array $options = [])
     {
         $this->curl = (is_null($curl)) ? new Curl() : $curl;
         $this->siteVerifyUrl = (is_null($siteVerifyUrl)) ? ReCaptcha::SITE_VERIFY_URL : $siteVerifyUrl;
@@ -90,7 +97,7 @@ class CurlPost implements RequestMethod
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_SSL_VERIFYPEER => true
         );
-        $this->curl->setoptArray($handle, $options);
+        $this->curl->setoptArray($handle, $options + $this->options);
 
         $response = $this->curl->exec($handle);
         $this->curl->close($handle);
